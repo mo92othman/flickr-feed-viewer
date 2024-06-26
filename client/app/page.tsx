@@ -1,9 +1,8 @@
-import ImageFeedGallery from "../components/imageFeed/imageFeedGallery";
+import ImageFeedGallery from "../components/imageFeed/ImageFeedGallery";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-10">
       <div>
-        <h1>Hi there!</h1>
         <ImageFeedGallery/>
       </div>
     </main>

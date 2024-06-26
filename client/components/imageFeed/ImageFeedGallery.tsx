@@ -18,9 +18,8 @@ async function ImageFeedGallery() {
   const images = await getServerSideProps();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-20">
       <div>
-        <h1>Hi thereeeeee!</h1>
         <ImageFeedList images={images} />
       </div>
     </main>
