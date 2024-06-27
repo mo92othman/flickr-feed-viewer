@@ -2,31 +2,34 @@
 
 import React, { useEffect, useState } from 'react';
 import ImageFeedList from './ImageFeedList';
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation';
 
 function ImageFeedGallery() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [tag, setTag] = useState(null); // State to store the extracted tag from the client url
 
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const url = `${pathname}?${searchParams}`
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const url = `${pathname}?${searchParams}`;
   const queryString = url.split('?')[1]; // Split by '?' and get the second part
   const queryParams = new URLSearchParams(queryString); // Create URLSearchParams object
-  const tag = queryParams.get('q'); // Get the value of 'q'
-  
-  console.log(tag); 
+  const tagFromURL = queryParams.get('q'); // Get the value of 'q'
 
-    useEffect(() => {
-      
-      console.log(url)
-    }, [url])
+  useEffect(() => {
+    setTag(tagFromURL); // Set the tag state with the value from URL
+  }, [tagFromURL]);
 
   useEffect(() => {
     const fetchImages = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/api/screen'); // To be adjusted to accept dynamic tags
+        let apiUrl = '/api';
+        if (tag) {
+          apiUrl = `/api/${tag}`; // Adjust API URL based on whether tag exists
+        }
+
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error('Failed to fetch images');
         }
@@ -46,7 +49,7 @@ function ImageFeedGallery() {
     };
 
     fetchImages();
-  }, []); // Empty dependency array ensures useEffect runs only once on mount
+  }, [tag]); // Include 'tag' in the dependency array to trigger fetch when tag changes
 
   // Function to extract images based on the response structure
   const extractImages = (data) => {
