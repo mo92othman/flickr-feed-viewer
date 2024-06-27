@@ -4,10 +4,10 @@ import SearchBar from './SearchBar';
 
 export default function Header() {
   return (
-    <header className="bg-blue-500 text-white p-4 flex justify-between items-center">
+    <header className="bg-sky-500 text-white p-4 flex justify-between items-center px-8">
     <div className="flex items-center"> 
       <Image
-        src="/assets/logo.png"
+        src="/assets/logo.svg"
         width={50}
         height={50}
         alt="logo"
