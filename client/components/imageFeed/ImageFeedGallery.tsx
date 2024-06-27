@@ -2,10 +2,25 @@
 
 import React, { useEffect, useState } from 'react';
 import ImageFeedList from './ImageFeedList';
+import { usePathname, useSearchParams } from 'next/navigation'
 
 function ImageFeedGallery() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const url = `${pathname}?${searchParams}`
+  const queryString = url.split('?')[1]; // Split by '?' and get the second part
+  const queryParams = new URLSearchParams(queryString); // Create URLSearchParams object
+  const tag = queryParams.get('q'); // Get the value of 'q'
+  
+  console.log(tag); 
+
+    useEffect(() => {
+      
+      console.log(url)
+    }, [url])
 
   useEffect(() => {
     const fetchImages = async () => {
