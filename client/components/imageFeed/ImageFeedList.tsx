@@ -1,12 +1,11 @@
-import React from 'react';
+import { ImageData  } from './Types'
 import ImageFeedItem from './ImageFeedItem';
 
-export default function ImageFeedList({ images }) {
-  // Render a message if images array is empty
-  if (images.length === 0) {
-    return <p>No images to display.</p>;
-  }
+interface ImageFeedListProps {
+  images: ImageData[];
+}
 
+const ImageFeedList: React.FC<ImageFeedListProps> = ({ images }) => {
   // Render the list of images
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
@@ -16,3 +15,5 @@ export default function ImageFeedList({ images }) {
     </div>
   );
 }
+
+export default ImageFeedList;

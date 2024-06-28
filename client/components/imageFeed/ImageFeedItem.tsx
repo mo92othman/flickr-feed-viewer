@@ -1,6 +1,9 @@
-import Image from 'next/image';
+import { ImageData  } from './Types'
+interface ImageFeedItemProps {
+  image: ImageData;
+}
 
-export default function ImageFeedItem({ image }) {
+const ImageFeedItem: React.FC<ImageFeedItemProps> = ({ image }) => {
   return (
     <div className="relative flex justify-center items-center transition-transform duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
       <div className="w-full h-80 bg-pink-400 rounded-md overflow-hidden dark:bg-gray-500">
@@ -12,3 +15,5 @@ export default function ImageFeedItem({ image }) {
     </div>
   );
 }
+
+export default ImageFeedItem;

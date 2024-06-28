@@ -1,4 +1,9 @@
 import { NextResponse } from 'next/server';
+
+type Error = {
+  error: string;
+};
+
 export const GET = async (
   req: Request,
   { params }: { params: { tags: string } },

@@ -3,11 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import ImageFeedList from './ImageFeedList';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function ImageFeedGallery() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [tag, setTag] = useState(null); // State to store the extracted tag from the client url
+  const [tag, setTag] = useState<string | null>(null);// State to store the extracted tag from the client url
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -52,7 +53,7 @@ function ImageFeedGallery() {
   }, [tag]); // Include 'tag' in the dependency array to trigger fetch when tag changes
 
   // Function to extract images based on the response structure
-  const extractImages = (data) => {
+  const extractImages = (data:any) => {
     if (Array.isArray(data.items)) {
       return data.items;
     } else if (data.data && Array.isArray(data.data.items)) {
@@ -66,7 +67,9 @@ function ImageFeedGallery() {
     <main className="flex min-h-screen flex-col items-center justify-between p-20">
       <div>
         {loading ? (
-          <p>Loading...</p>
+           <div className="animate-spin mt-28">
+           <AiOutlineLoading3Quarters size={100}/>
+         </div>
         ) : (
           <ImageFeedList images={images} />
         )}
