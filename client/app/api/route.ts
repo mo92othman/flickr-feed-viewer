@@ -1,4 +1,8 @@
 import { NextResponse } from 'next/server';
+type Error = {
+  error: string;
+};
+
 export const GET = async () => {
   try {
     const apiUrl = `https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&api_key=${process.env.NEXT_PUBLIC_FLICKR_API_KEY}`;
@@ -8,6 +12,6 @@ export const GET = async () => {
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching data:', error);
-    return NextResponse.error(new Error('Failed to fetch data'));
+    return NextResponse.json(error);
   }
 };
