@@ -39,7 +39,6 @@ function ImageFeedGallery() {
         // Ensure we always have an array of images
         const fetchedImages = extractImages(data);
 
-        console.log('fetchedImages:', fetchedImages);
         setImages(fetchedImages);
       } catch (error) {
         console.error('Error fetching data:', error);
