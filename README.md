@@ -1,5 +1,5 @@
 
-![Screenshot](client/public/assets/screenshot.png)
+![Screenshot](client/public/assets/screenshot.jpg)
 
 # Flickr Feed Viewer
 

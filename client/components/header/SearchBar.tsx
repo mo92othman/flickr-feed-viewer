@@ -15,7 +15,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden px-2">
+    <div className="flex items-center border border-gray-300 rounded-full overflow-hidden px-2 ml-6">
     <form onSubmit={handleSubmit} className="flex items-center pl-4">
       <input
         type="text"
