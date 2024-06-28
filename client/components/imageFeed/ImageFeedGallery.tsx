@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 import ImageFeedList from './ImageFeedList';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import ImageFeedItem from './ImageFeedItem';
-
 
 function ImageFeedGallery() {
   const [images, setImages] = useState([]);
